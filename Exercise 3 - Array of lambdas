@@ -1,0 +1,25 @@
+using System;
+using System.Linq;
+
+//Write a program in C# Sharp to use an array of lambdas to do calculations with numbers
+public class Program
+{
+
+	public static void Main(){
+	
+		int[] list = new int[]{315, 978, 834, 688, 75, 823, 413, 110, 410, 848};
+
+		int divisible = 2;
+		Func<int,int,bool>[] it_divides = {
+			(num, num_2) => num % num_2 == 0,
+			(num, num_2) => (num * num) < 10000
+		};
+		
+		foreach (int num in list){
+			if (it_divides[0](num, divisible)) Console.WriteLine(num + " is divisible by " + divisible);
+			else Console.WriteLine(num + " is not divisible by " + divisible);
+			if (it_divides[1](num, divisible)) Console.WriteLine(num + " squared is smaller than 10000.");
+			else Console.WriteLine(num + " squared is not smaller than 10000.");
+		}
+	}
+}
